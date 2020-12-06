@@ -30,10 +30,10 @@
 	require_once(__CA_MODELS_DIR__.'/ca_metadata_elements.php');
 	require_once(__CA_MODELS_DIR__.'/ca_metadata_element_labels.php');
 	require_once(__CA_MODELS_DIR__.'/ca_metadata_type_restrictions.php');
-	require_once(__CA_LIB_DIR__.'/ca/Attributes/Attribute.php');
-	require_once(__CA_LIB_DIR__.'/core/Datamodel.php');
-	require_once(__CA_LIB_DIR__.'/ca/BaseEditorController.php');
-	require_once(__CA_LIB_DIR__.'/ca/ResultContext.php');
+	require_once(__CA_LIB_DIR__.'/Attributes/Attribute.php');
+	require_once(__CA_LIB_DIR__.'/Datamodel.php');
+	require_once(__CA_LIB_DIR__.'/BaseEditorController.php');
+	require_once(__CA_LIB_DIR__.'/ResultContext.php');
 
 class ElementsController extends BaseEditorController {
 	# -------------------------------------------------------
@@ -46,7 +46,6 @@ class ElementsController extends BaseEditorController {
 	public function Index() {
 		AssetLoadManager::register('tableList');
 	
-		$vo_dm = Datamodel::load();
 		$va_elements = ca_metadata_elements::getRootElementsAsList(null, null, true, true);
 		$this->view->setVar('element_list',$va_elements);
 		$this->view->setVar('attribute_types', Attribute::getAttributeTypes());
@@ -81,7 +80,7 @@ class ElementsController extends BaseEditorController {
 				WHERE
 					cme.parent_id = ?
 				ORDER BY
-					cme.rank
+					cme.`rank`
 			",(int)$t_element->get('element_id'));
 			
 			while($qr_result->nextRow()){
@@ -147,7 +146,7 @@ class ElementsController extends BaseEditorController {
 			$vo_db = $t_element->getDb();
 			if($vn_parent_id){
 				$qr_tmp = $vo_db->query("
-					SELECT MAX(rank) AS rank
+					SELECT MAX(`rank`) AS `rank`
 					FROM ca_metadata_elements
 					WHERE parent_id=?
 				",$vn_parent_id);
@@ -362,14 +361,14 @@ class ElementsController extends BaseEditorController {
 		$t_element = $this->getElementObject();
 		$vo_db = new Db();
 		$qr_tmp = $vo_db->query("
-			SELECT element_id, rank
+			SELECT element_id, `rank`
 			FROM ca_metadata_elements
 			WHERE
-				(rank < ?)
+				(`rank` < ?)
 				AND
 				(parent_id = ?)
 			ORDER BY
-				rank DESC
+				`rank` DESC
 		",$t_element->get('rank'),$t_element->get('parent_id'));
 		if(!$qr_tmp->nextRow()){
 			$this->notification->addNotification(_t("This element is at the top of the list"), __NOTIFICATION_TYPE_ERROR__);
@@ -401,14 +400,14 @@ class ElementsController extends BaseEditorController {
 		$t_element = $this->getElementObject();
 		$vo_db = new Db();
 		$qr_tmp = $vo_db->query("
-			SELECT element_id,rank
+			SELECT element_id, 	`rank`
 			FROM ca_metadata_elements
 			WHERE
-				(rank > ?)
+				(`rank` > ?)
 				AND
 				(parent_id = ?)
 			ORDER BY
-				rank
+				`rank`
 		",$t_element->get('rank'),$t_element->get('parent_id'));
 		if(!$qr_tmp->nextRow()){
 			$this->notification->addNotification(_t("This element is at the bottom of the list"), __NOTIFICATION_TYPE_ERROR__);
@@ -465,10 +464,10 @@ class ElementsController extends BaseEditorController {
 		$vo_db = new Db();
 		$qr_res = $vo_db->query("
 			SELECT * FROM
-				(SELECT rank,count(*) as count
+				(SELECT `rank` ,count(*) as count
 					FROM ca_metadata_elements
 					WHERE parent_id=?
-					GROUP BY rank) as lambda
+					GROUP BY `rank`) as `lambda`
 			WHERE
 				count > 1;
 		",$pn_parent_id);
@@ -495,9 +494,9 @@ class ElementsController extends BaseEditorController {
 					WHERE
 						(parent_id=?)
 						AND
-						(rank>?)
+						(`rank` > ?)
 					ORDER BY
-						rank
+						`rank`
 			",$pn_parent_id,$vn_rank);
 			while($qr_res->nextRow()){
 				$t_element->load($qr_res->get('element_id'));
@@ -511,9 +510,9 @@ class ElementsController extends BaseEditorController {
 					WHERE
 						(parent_id=?)
 						AND
-						(rank=?)
+						(`rank`=?)
 					ORDER BY
-						rank
+						`rank`
 			",$pn_parent_id,$vn_rank);
 			$i=0;
 			while($qr_res->nextRow()){

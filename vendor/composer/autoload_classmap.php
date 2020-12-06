@@ -6,15 +6,22 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
+    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Dompdf\\Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
+    'File_MARC_Control_Field' => $vendorDir . '/pear/file_marc/File/MARC/Control_Field.php',
+    'File_MARC_Data_Field' => $vendorDir . '/pear/file_marc/File/MARC/Data_Field.php',
     'HTML5_Data' => $vendorDir . '/dompdf/dompdf/lib/html5lib/Data.php',
     'HTML5_InputStream' => $vendorDir . '/dompdf/dompdf/lib/html5lib/InputStream.php',
     'HTML5_Parser' => $vendorDir . '/dompdf/dompdf/lib/html5lib/Parser.php',
     'HTML5_Tokenizer' => $vendorDir . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
     'HTML5_TreeBuilder' => $vendorDir . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
+    'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+    'Normalizer' => $vendorDir . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+    'PEAR_Exception' => $vendorDir . '/pear/pear_exception/PEAR/Exception.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
     'PHPUnit\\Framework\\BaseTestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
     'PHPUnit\\Framework\\TestCase' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
@@ -474,5 +481,8 @@ return array(
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 );

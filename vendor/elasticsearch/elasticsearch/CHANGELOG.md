@@ -1,3 +1,17 @@
+## Release 5.5.0
+
+- Added `User-Agent` header equal to  `elasticsearch-php/5.5.0 (metadata-values)` [[26da9a33]](https://github.com/elastic/elasticsearch-php/commit/26da9a33)
+- Fix #846 choosing GET and POST in endpoints based on body [[cdbeab38]](https://github.com/elastic/elasticsearch-php/commit/cdbeab38)
+- Fix #843 adding `wait_for_active_shards` and `pipeline` in UpdateByQuery [[8b36458]](https://github.com/elastic/elasticsearch-php/commit/8b36458319b1734d1032817abf1f850d3fcfd4ec)
+
+## Release 5.4.0
+
+- fixed php 7.3 compatibility for elasticsearch 5 (#826) [[14a19ba]](http://github.com/elasticsearch/elasticsearch-php/commit/14a19ba)
+- Add `slices` param to whitelisted UBQ params (#752) [[13f248e]](http://github.com/elasticsearch/elasticsearch-php/commit/13f248e)
+- [DOCS] add link to community index helper (#681) (#726) [[6d414f2]](http://github.com/elasticsearch/elasticsearch-php/commit/6d414f2)
+- Fix issue with getting status of respository and snapshots. (#719) [[65aafc1]](http://github.com/elasticsearch/elasticsearch-php/commit/65aafc1)
+- fix DeleteByQuery param white list (#748) [[55e6a70]](http://github.com/elasticsearch/elasticsearch-php/commit/55e6a70)
+
 ## Release 5.3.2
 
 - Fix parsing of NodesInfo for Sniffing [[d771699]](http://github.com/elasticsearch/elasticsearch-php/commit/d771699)
@@ -289,4 +303,3 @@ tweaks over time.  The test framework is in much better shape, largely thanks to
 - Revert "[TEST] fix object notation" [[b966328]](http://github.com/elasticsearch/elasticsearch-php/commit/b966328)
 - Make test fail on Yaml parse error [[f1b3adb]](http://github.com/elasticsearch/elasticsearch-php/commit/f1b3adb)
 - Only show log when test fails [[f2acb43]](http://github.com/elasticsearch/elasticsearch-php/commit/f2acb43)
-
