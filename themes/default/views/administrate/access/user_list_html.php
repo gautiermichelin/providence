@@ -95,7 +95,7 @@
 				<td>
 					<?php print $va_user['active'] ? _t('Yes') : _t('No'); ?>
 				</td>
-				<td>
+				<td data-text="<?php print $o_tep->getText(["start_as_iso8601"=>true]) ?>">
 					<?php print ($va_user['last_login'] > 0) ? "<span style='display:none;'>".$va_user['last_login']."</span>".$o_tep->getText() : '-'; ?>
 				</td>
 				<td class="listtableEditDelete">
